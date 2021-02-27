@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453375936121",
+    "project_id": "foresttagger",
+    "storage_bucket": "foresttagger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453375936121:android:819e51643e4a8f0e0236a8",
+        "android_client_info": {
+          "package_name": "com.example.forest_tagger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453375936121-hv4alvekgjcs3br53jrgg0p01noglqvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAeIM6jj5FEKqIduWp1XXl4ZCCXGlXcOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453375936121-hv4alvekgjcs3br53jrgg0p01noglqvd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
