@@ -32,7 +32,7 @@ class TreeProvider{
   Database db;
 
   Future open(String path) async {
-    db = await openDatabase(path, version: 2,
+    db = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
           await db.execute('''
             create table Trees ( 
@@ -44,12 +44,12 @@ class TreeProvider{
   }
 
   void insert(Tree tree) async {
-    await open("demo.db");
+    await open("treeDatabase.db");
     await db.insert("Trees", tree.toMap(),nullColumnHack: 'id');
   }
 
   Future<List<Map>> getTrees() async{
-    await open("demo.db");
+    await open("treeDatabase.db");
     return db.query("Trees", columns: ["treeId", "latitude", "longitude"]);
   }
 
