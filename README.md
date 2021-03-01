@@ -1,25 +1,18 @@
-# forest_tagger
+# Trees Tagger app and analysis software
 
-A new Flutter application.
+## This project has the vision to assist the officials for Forest trees census and tagging each tree with proper location (latitude and longitude), tree type, and other arguments. and further had the plan to apply data analysis over-collected data.
 
-## Getting Started
+### This project is basically based on:
+* Flutter based app :  In this app user can tag the tree by locating or going to exact location and then feeding the latitude and longitude details along with the other parameters. once the data is stored it will generate unique key and an QR code for the same, So that further we could refer the tree by that Code only.
+* An data analysis system with Web App interface on collected data and apply machine learning model for prediction over different aspect areas.
 
-This project is a starting point for a Flutter application.
+### Problem it solves:
+* Digital transformation for maintaining the forest trees record.
+* QR code generation for unique identification of every tree.
+* Data stored and could be maintained easily over cloud storage or even local storage.
+* Could help in annalysing the various aspects regarding trees, diversity, age, height,growth and much more.
+* Predicting certain arguments on the basis of data collected. 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-Steps to get this app in your system for contribution:
-1) Start android studio.
-2) Then select "Get from version control" option. 
-3) Paste the url of our repository in the url text input widget.
-4) Press the CLONE button, after this you will get the code in your system but with lots of errors.
-5) To resolve these errors, you have to use "pub get" to get all the dependencies in pubspec.yaml file. 
-6) Go to pubspec.yaml file and press the Pub Get button in to top right.
-7) Wait for the analysing to finish and you are all set for contributing to our app.
+## Project setup
+### For setting up project in local PC 
+Either by watching tutorial [Trees Tagging App](https://youtu.be/1KWwgAF0LXY) or could follow below steps.
