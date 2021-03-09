@@ -15,4 +15,11 @@
 
 ## Project setup
 ### For setting up project in local PC 
-Either by watching tutorial [Trees Tagging App](https://youtu.be/1KWwgAF0LXY).
+Either by watching tutorial [Trees Tagging App](https://youtu.be/1KWwgAF0LXY), or by following the steps given below:
+
+1. Make sure you have got flutter (including the command line tool) and Android Studio installed.
+2. Open Android Studio and select 'Import from version control' and enter the repo's git url.
+3. Navigate to any file which shows 'Missing class' errors, and click on the 'Get dependencies' button
+   on the yellow ribbon at the top.
+
+The repo's codebase is now setup on your local machine, and you can make changes to it and push them to the git repo.
