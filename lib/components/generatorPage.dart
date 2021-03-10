@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:forest_tagger/components/backButton.dart';
 import 'package:forest_tagger/components/qrshower.dart';
 import 'package:forest_tagger/main.dart';
+import 'package:toast/toast.dart';
 import 'package:uuid/uuid.dart';
 
 class GeneratorPage extends StatefulWidget {
@@ -151,38 +152,13 @@ class GeneratorPageState extends State<GeneratorPage> {
                           MaterialPageRoute(
                               builder: (context) => QRShower(data)));
                     } else {
-                      return showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              content: Container(
-                                height: 85,
-                                child: Padding(
-                                  padding: EdgeInsets.only(),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        "Please enter data",
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          });
+                      Toast.show(
+                        "Please enter the data",
+                        context,
+                        duration: Toast.LENGTH_LONG,
+                        gravity: Toast.BOTTOM,
+                        textColor: Colors.white,
+                      );
                     }
                   },
                 )
