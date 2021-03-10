@@ -37,6 +37,7 @@ dependencies:
   screenshot: ^0.3.0
   permission_handler: ^5.1.0+2
   pdf: ^2.1.0
+  downloads_path_provider: ^0.1.0
   path_provider:
 
 
