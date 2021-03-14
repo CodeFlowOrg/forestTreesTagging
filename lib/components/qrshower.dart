@@ -103,7 +103,7 @@ class QRShowerState extends State<QRShower>{
     final file = await _localFile;
     await file.writeAsBytes(await pdf.save(),flush: true);
    
-
+  }
 
   void onCheckPermission() async {
     var status = await Permission.storage.status;
