@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'components/AuthHandler.dart';
+import 'package:forest_tagger/components/AuthHandler.dart';
 
 
 
