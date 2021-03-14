@@ -3,7 +3,7 @@
 
 import 'dart:io';
 import 'dart:typed_data';
-
+import 'package:random_string/random_string.dart';
 import 'package:downloads_path_provider/downloads_path_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +27,7 @@ class QRShower extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     return QRShowerState();
+
   }
 
 }
@@ -122,7 +123,7 @@ class QRShowerState extends State<QRShower>{
 
     final path=await _localPath;
 
-    return File('$path/counter.pdf');
+    return File('$path/${randomString(10)}.pdf');
   }
 
   Future<String> get _localPath async {
