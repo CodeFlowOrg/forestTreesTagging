@@ -1,15 +1,14 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:forest_tagger/components/homeScreen.dart';
 
-import 'DataModels/Tree.dart';
+import 'components/AuthHandler.dart';
+
 
 
 void main() async{
-
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  runApp(MyApp());
 
 }
 
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: HomeScreen(),
+      home: loggedInChecking(),
     );
   }
 }

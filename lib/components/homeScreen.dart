@@ -1,12 +1,53 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:forest_tagger/components/WelComePage.dart';
 import 'package:forest_tagger/components/generatorPage.dart';
 import 'package:forest_tagger/components/scannerPage.dart';
 
 import 'myflatButton.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   String name = "User";
+
+  HomeScreen(this.name);
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _HomeScreen(this.name);
+  }
+}
+
+class _HomeScreen extends State<HomeScreen> {
+  String name = "User";
+
+  _HomeScreen(this.name);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    try {
+      if (name == "User") {
+        FirebaseFirestore.instance
+            .collection('users')
+            .where('email', isEqualTo: FirebaseAuth.instance.currentUser.email)
+            .get()
+            .then((querySnapShot) {
+          querySnapShot.docs.forEach((element) {
+            setState(() {
+              print(element.get('user'));
+              this.name = element.get('user');
+            });
+          });
+        });
+      }
+    }catch(e){
+
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +110,14 @@ class HomeScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         side: BorderSide(color: Colors.green, width: 3.0),
                         borderRadius: BorderRadius.circular(5.0))),
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => Welcome()),
+                  );
+                },
               ))
         ],
       ),
