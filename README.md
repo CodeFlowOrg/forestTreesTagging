@@ -23,3 +23,16 @@ Either by watching tutorial [Trees Tagging App](https://youtu.be/1KWwgAF0LXY), o
    on the yellow ribbon at the top.
 
 The repo's codebase is now setup on your local machine, and you can make changes to it and push them to the git repo.
+<h2>Contributors:</h2>
+
+### Credits goes to these people:✨
+
+<table>
+	<tr>
+		<td>
+   <a href="https://github.com/CodeFlow201/forestTreesTagging/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=CodeFlow201/forestTreesTagging" />
+</a>
+	</td>
+	</tr>
+</table>
