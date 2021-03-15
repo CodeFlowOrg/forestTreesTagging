@@ -7,7 +7,7 @@
 * A data analysis system with Web App interface to the collected data and apply a machine learning model for prediction of different aspects.
 
 ## Tech Stack:
-<img alt="Dart" src="https://img.shields.io/badge/dart-%230175C2.svg?&style=for-the-badge&logo=dart&logoColor=white"/>	<img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>	<img alt="Objective-C" src="https://img.shields.io/badge/Objective c%20-%2300599C.svg?&style=for-the-badge&logo=c&logoColor=white"/>	<img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white"/>
+<img alt="Flutter" src="https://img.shields.io/badge/Flutter%20-%2302569B.svg?&style=for-the-badge&logo=Flutter&logoColor=white" />	<img alt="Dart" src="https://img.shields.io/badge/dart-%230175C2.svg?&style=for-the-badge&logo=dart&logoColor=white"/>	<img alt="Firebase" src="https://img.shields.io/badge/firebase%20-%23039BE5.svg?&style=for-the-badge&logo=firebase"/>	
 ### Problem it solves:
 * Digital transformation for maintaining the record of forest trees.
 * QR code generation for unique identification of every tree.
