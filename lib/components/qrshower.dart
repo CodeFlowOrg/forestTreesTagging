@@ -5,11 +5,11 @@ import 'package:downloads_path_provider/downloads_path_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:forest_tagger/components/backButton.dart';
-import 'package:path_provider/path_provider.dart';
+
 import 'package:permission_handler/permission_handler.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:pdf/pdf.dart';
+
 import 'package:pdf/widgets.dart' as pw;
 
 String qrData = "";
@@ -51,7 +51,7 @@ class QRShowerState extends State<QRShower>{
                   controller: screenshotController,
                   child: PrettyQr(
                       image:
-                          NetworkImage("https://i.ibb.co/TqSqLS9/forest-1.png"),
+                      NetworkImage("https://i.ibb.co/TqSqLS9/forest-1.png"),
                       typeNumber: 15,
                       size: 350,
                       data: qrData.trim(),
@@ -102,7 +102,7 @@ class QRShowerState extends State<QRShower>{
     );
     final file = await _localFile;
     await file.writeAsBytes(await pdf.save(),flush: true);
-   
+
   }
 
   void onCheckPermission() async {

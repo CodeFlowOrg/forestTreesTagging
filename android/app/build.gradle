@@ -26,7 +26,7 @@ apply plugin: 'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     lintOptions {
         disable 'InvalidPackage'
@@ -39,6 +39,7 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -52,4 +53,11 @@ android {
 
 flutter {
     source '../..'
+}
+
+dependencies {
+
+    implementation platform('com.google.firebase:firebase-bom:26.7.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
 }
