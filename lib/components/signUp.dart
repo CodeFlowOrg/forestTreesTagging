@@ -176,7 +176,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onPressed: () async{
                     if(_signUpKey.currentState.validate()) {
                       print("Can Proceed from Sign Up");
-                      var _signAuth = SignUpAuth(this._userEmail.text, this._userPwd.text, this._userPwd.text, context);
+                      var _signAuth = SignUpAuth(this._userEmail.text, this._userPwd.text, this._userName.text, context);
                       _signAuth.auth();
 
                     } else
