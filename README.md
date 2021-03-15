@@ -6,6 +6,8 @@
 * Flutter based app :  In this app, the user can tag the tree by locating or going to exact location and then feeding the latitude and longitude details along with the other parameters. Once the data is stored, it will generate a unique key and a QR code for the same, so that later on we can refer to that tree by that code itself.
 * A data analysis system with Web App interface to the collected data and apply a machine learning model for prediction of different aspects.
 
+## Tech Stack:
+<img alt="Flutter" src="https://img.shields.io/badge/Flutter%20-%2302569B.svg?&style=for-the-badge&logo=Flutter&logoColor=white" />	<img alt="Dart" src="https://img.shields.io/badge/dart-%230175C2.svg?&style=for-the-badge&logo=dart&logoColor=white"/>	<img alt="Firebase" src="https://img.shields.io/badge/firebase%20-%23039BE5.svg?&style=for-the-badge&logo=firebase"/>	
 ### Problem it solves:
 * Digital transformation for maintaining the record of forest trees.
 * QR code generation for unique identification of every tree.
