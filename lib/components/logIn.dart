@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:forest_tagger/Services/logInAuthentication.dart';
 import 'package:forest_tagger/components/homeScreen.dart';
 import 'package:forest_tagger/components/signUp.dart';
-import 'file:///C:/Users/dasgu/AndroidStudioProjects/forest_tagger/lib/Services/logInAuthentication.dart';
 
 class LogInScreen extends StatefulWidget {
   @override
