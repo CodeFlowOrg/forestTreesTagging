@@ -42,6 +42,7 @@ dependencies:
   downloads_path_provider: ^0.1.0
   path_provider:
   toast:
+  clip_shadow: ^0.2.1
 
 
 

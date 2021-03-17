@@ -82,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: TextFormField(
                   controller: _userEmail,
-                  validator: (userEmail){
+                  validator: (userEmail) {
                     RegExp _emailRegex = RegExp(
                         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
                     if (_emailRegex.hasMatch(userEmail)) {
@@ -107,8 +107,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: TextFormField(
                   controller: _userPwd,
-                  validator: (userPwd){
-                    if(userPwd.length < 6)
+                  validator: (userPwd) {
+                    if (userPwd.length < 6)
                       return "Password At Least 6 characters";
                     return null;
                   },
@@ -131,10 +131,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: TextFormField(
                   controller: _userConfirmPwd,
                   obscureText: true,
-                  validator: (userConPwd){
-                    if(userConPwd.length<6)
+                  validator: (userConPwd) {
+                    if (userConPwd.length < 6)
                       return "Password at least 6 characters";
-                    else if(userConPwd != _userPwd.text)
+                    else if (userConPwd != _userPwd.text)
                       return "Password and Confirm Password are not same";
                     return null;
                   },
@@ -173,12 +173,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                  onPressed: () async{
-                    if(_signUpKey.currentState.validate()) {
+                  onPressed: () async {
+                    if (_signUpKey.currentState.validate()) {
                       print("Can Proceed from Sign Up");
-                      var _signAuth = SignUpAuth(this._userEmail.text, this._userPwd.text, this._userName.text, context);
+                      var _signAuth = SignUpAuth(this._userEmail.text,
+                          this._userPwd.text, this._userName.text, context);
                       _signAuth.auth();
-
                     } else
                       print("Can't Proceed From Sign Up");
                   },
