@@ -83,7 +83,7 @@ class _HomeScreen extends State<HomeScreen> {
           );
         } catch (e) {
           // If user not set profile image
-          print("Present 1");
+          print("User not set profile image");
           print(e.toString());
           setState(() {
             _profileImage = Image.asset(
@@ -96,7 +96,7 @@ class _HomeScreen extends State<HomeScreen> {
     } catch (e) {
       // Sometimes due to lagging, Image not loading...so loading screen
       // If you close the app and reopen, profile image automatically come
-      print("Present 2");
+      print("Lagging Problem");
       print(e.toString());
       setState(() {
         _profileImage = Image.asset(
