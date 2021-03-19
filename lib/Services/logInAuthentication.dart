@@ -16,24 +16,27 @@ class LogInAuth {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: this._email, password: this._pwd)
         .then((signedInUser) {
-      if (!signedInUser.user.emailVerified)
-        messageShow(this._context, "Log-In Error", "Email Not Verified\nA Link send to your registered mail\nPlease verify email at first");
-      else {
-        FirebaseFirestore.instance.collection('users').where(
-            'email', isEqualTo: this._email)
+      if (!signedInUser.user.emailVerified) {
+        messageShow(this._context, "Log-In Error",
+            "Email Not Verified\nA Link send to your registered mail\nPlease verify email at first");
+        FirebaseAuth.instance.signOut();
+      } else {
+        FirebaseFirestore.instance
+            .collection('users')
+            .where('email', isEqualTo: this._email)
             .get()
-            .then((querySnapShot){
-              querySnapShot.docs.forEach((element){
-                Navigator.pop(this._context);
-                Navigator.pop(this._context);
-                Navigator.push(
-                  this._context,
-                  MaterialPageRoute(builder: (_) => HomeScreen(element.get('user'))),
-                );
-                messageShow(this._context, "Log In Complete", "Enjoy this app");
-              });
+            .then((querySnapShot) {
+          querySnapShot.docs.forEach((element) {
+            Navigator.pop(this._context);
+            Navigator.pop(this._context);
+            Navigator.push(
+              this._context,
+              MaterialPageRoute(
+                  builder: (_) => HomeScreen(element.get('user'))),
+            );
+            messageShow(this._context, "Log In Complete", "Enjoy this app");
+          });
         });
-
       }
     }).catchError((e) {
       print(e);

@@ -21,6 +21,9 @@ class SignUpAuth {
         'email': this._email,
         'user': this._userName,
       });
+
+      FirebaseAuth.instance.signOut();
+
       Navigator.pop(this._context);
       Navigator.push(
         this._context,
@@ -28,6 +31,7 @@ class SignUpAuth {
       );
       messageShow(this._context, "Sign Up Complete", "Please Log-in to Enjoy this app");
     }).catchError((e) {
+      print("Sign-Up Error is: ${e.toString()}");
       if(e.toString() == "[firebase_auth/email-already-in-use] The email address is already in use by another account.")
         messageShow(this._context, "Sign-Up Error", "Email Already Used by other User");
       else
