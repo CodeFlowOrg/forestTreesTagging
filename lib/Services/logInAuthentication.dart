@@ -40,7 +40,7 @@ class LogInAuth {
       }
     }).catchError((e) {
       print(e);
-      messageShow(this._context, "Log-In Error", "Email Not Found");
+      messageShow(this._context, "Log-In Error", "Email or Password is invalid");
     });
   }
 }
