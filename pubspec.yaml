@@ -45,6 +45,7 @@ dependencies:
   clip_shadow: ^0.2.1
   firebase_storage:
   image_picker:
+  geolocator:
 
 
 
@@ -82,13 +83,13 @@ flutter:
     # "family" key with the font family name, and a "fonts" key with a
     # list giving the asset and other descriptors for the font. For
     # example:
-  fonts:
-    - family: Lora
-      fonts:
-        - asset: assets\fonts\Lora-BoldItalic.ttf
-          weight: 500
-          style: italic
-        - asset: assets\fonts\Lora-Regular.ttf
+  #fonts:
+    #- family: Lora
+    #  fonts:
+    #    - asset: assets\fonts\Lora-BoldItalic.ttf
+    #     weight: 500
+    #      style: italic
+    #    - asset: assets\fonts\Lora-Regular.ttf
     # - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
