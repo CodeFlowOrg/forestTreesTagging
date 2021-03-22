@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:forest_tagger/components/backButton.dart';
@@ -7,6 +6,7 @@ import 'package:forest_tagger/components/qrshower.dart';
 import 'package:forest_tagger/main.dart';
 import 'package:toast/toast.dart';
 import 'package:uuid/uuid.dart';
+import 'package:geolocator/geolocator.dart';
 
 class GeneratorPage extends StatefulWidget {
   @override
@@ -22,7 +22,18 @@ class GeneratorPageState extends State<GeneratorPage> {
   TextEditingController controllername = TextEditingController();
   TextEditingController controlleryear = TextEditingController();
 
+  void getLocation() async {
+    Position res = await Geolocator.getCurrentPosition();
+    setState(() {
+      controllerloc.text = res.latitude.toString() + ", " + res.longitude.toString();
+    });
+  }
+
   @override
+  void initState(){
+    getLocation();
+    super.initState();
+  }
   Widget build(BuildContext context) {
     return Material(
       child: Stack(
