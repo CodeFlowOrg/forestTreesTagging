@@ -20,10 +20,10 @@ class _WelcomeState extends State<Welcome> {
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height / 10),
                 child: Image(
-                  image: AssetImage("assets/images/palm-tree-outline.png"),
-                  height: 200,
-                  width: 100,
-                  color: Colors.green,
+                  image: AssetImage("assets/images/login.png"),
+                  height: 300,
+                  width: double.infinity,
+                  color: Color(0xffFF43AD0B),
                 ),
               ),
               SizedBox(
@@ -32,14 +32,14 @@ class _WelcomeState extends State<Welcome> {
               Container(
                 alignment: Alignment.center,
                 child: Text(
-                  "Trees Tagging",
+                  "TREES TAGGING",
                   style: TextStyle(
                     fontFamily: 'Lora',
                     fontSize: 30.0,
-                    fontStyle: FontStyle.italic,
+                    // fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.w500,
-                    color: Colors.blueAccent,
-                    letterSpacing: 1.0,
+                    color: Color(0xffAD0033),
+                    letterSpacing: 2.0,
                   ),
                 ),
               ),
@@ -54,13 +54,14 @@ class _WelcomeState extends State<Welcome> {
                     fontSize: 18.0,
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.w500,
-                    color: Color.fromRGBO(0, 0, 200, 1),
+                    color: Color(0xffFA1B5D),
+
                     letterSpacing: 1.0,
                   ),
                 ),
               ),
               SizedBox(
-                height: 40.0,
+                height: 100.0,
               ),
               Container(
                 //color: Colors.yellow,
@@ -69,7 +70,7 @@ class _WelcomeState extends State<Welcome> {
                   style: ElevatedButton.styleFrom(
                     elevation: 5.0,
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                    primary: Colors.lightBlueAccent,
+                    primary: Color(0xff3AB54A),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadiusDirectional.circular(30)),
                   ),
@@ -103,7 +104,7 @@ class _WelcomeState extends State<Welcome> {
                   style: ElevatedButton.styleFrom(
                     elevation: 5.0,
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                    primary: Colors.lightBlueAccent,
+                    primary: Color(0xff3AB54A),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadiusDirectional.circular(30)),
                   ),

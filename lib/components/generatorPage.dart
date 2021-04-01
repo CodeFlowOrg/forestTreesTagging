@@ -124,8 +124,8 @@ class GeneratorPageState extends State<GeneratorPage> {
                 ),
                 ElevatedButton(
                   child: Text(
-                    "Generate QR code",
-                    style: TextStyle(color: Colors.white),
+                    "Generate QR",
+                    style: TextStyle(color: Colors.white,fontSize: 16,letterSpacing: 1.0),
                   ),
                   style: ElevatedButton.styleFrom(
                       padding:

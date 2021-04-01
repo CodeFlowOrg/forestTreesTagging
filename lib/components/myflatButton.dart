@@ -14,6 +14,7 @@ class MyFlatButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: FlatButton(
+        color: Colors.black12,
         padding: EdgeInsets.all(15.0),
         onPressed: () async {
           Navigator.of(context)
@@ -22,10 +23,10 @@ class MyFlatButton extends StatelessWidget {
         child: Text(
           text,
           style:
-              TextStyle(color: Colors.lightGreen, fontWeight: FontWeight.bold),
+              TextStyle(color: Colors.white, fontWeight: FontWeight.bold,letterSpacing: 1,fontSize: 16),
         ),
         shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.green, width: 3.0),
+            side: BorderSide(color: Colors.black, width: 2.0),
             borderRadius: BorderRadius.circular(10.0)),
       ),
     );
