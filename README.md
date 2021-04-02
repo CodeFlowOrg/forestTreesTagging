@@ -36,7 +36,6 @@ Either by watching tutorial [Trees Tagging App](https://youtu.be/1KWwgAF0LXY), o
    on the yellow ribbon at the top.
 
 The repo's codebase is now setup on your local machine, and you can make changes to it and push them to the git repo.
-<h2>Contributors:</h2>
 
 ## Contributors:👨🏻‍💻
 ### Credits goes to these people✨
