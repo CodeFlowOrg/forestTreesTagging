@@ -172,6 +172,7 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff287030),
       body: Stack(
         children: [
           Center(
@@ -184,7 +185,7 @@ class _HomeScreen extends State<HomeScreen> {
                       alignment: Alignment.center,
                       child: CircleAvatar(
                         radius: 100,
-                        backgroundColor: Colors.lightBlueAccent,
+                        backgroundColor: Colors.black,
                         child: ClipOval(
                           child: SizedBox(
                             width: 192.0,
@@ -197,11 +198,16 @@ class _HomeScreen extends State<HomeScreen> {
                     Container(
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 150, left: 173),
+
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        shape: BoxShape.circle,
+                      ),
                       child: IconButton(
                         icon: Icon(
                           Icons.camera_alt_rounded,
                           size: 30.0,
-                          color: Colors.black54,
+                          color: Colors.white,
                         ),
                         onPressed: () {
                           print("Camera pressed");
@@ -224,7 +230,7 @@ class _HomeScreen extends State<HomeScreen> {
                     Text(
                       "Welcome,",
                       style: TextStyle(
-                        color: Colors.grey[700],
+                        color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
                       ),
@@ -255,11 +261,11 @@ class _HomeScreen extends State<HomeScreen> {
               child: ElevatedButton(
                 child: Text(
                   "LogOut",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white,letterSpacing: 1),
                 ),
                 style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                    primary: Colors.green,
+                    primary: Color(0xFF246326),
                     shape: RoundedRectangleBorder(
                         side: BorderSide(color: Colors.green, width: 3.0),
                         borderRadius: BorderRadius.circular(5.0))),
