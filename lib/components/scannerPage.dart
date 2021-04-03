@@ -5,67 +5,57 @@ import 'package:forest_tagger/DataModels/Tree.dart';
 import 'package:forest_tagger/components/treeListItem.dart';
 import 'package:forest_tagger/main.dart';
 
-class ScannerPage extends StatefulWidget {
+class ScannerPage extends StatefulWidget{
+
   @override
   State<StatefulWidget> createState() {
     return ScannerPageState();
   }
+  
 }
 
-class ScannerPageState extends State<ScannerPage> {
-  List<Tree> listOfScanneedTrees = [];
+class ScannerPageState extends State<ScannerPage>{
+
+List<Tree> listOfScanneedTrees = [];
+
 
   @override
   Widget build(BuildContext context) {
+
     return Material(
         child: Container(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: ListView(
-            children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(8, 20, 8, 10),
-                height: MediaQuery.of(context).size.height * 0.5,
-                width: double.infinity,
-                child: Image(
-                  image: AssetImage("assets/images/scan.png"),
-                  height: 500,
-                  width: double.infinity,
-                  color: Colors.green,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: FlatButton(
-                  padding: EdgeInsets.all(15.0),
-                  onPressed: () async {
-                    String res = await BarcodeScanner.scan();
-                    var arr = res.split(", ");
-                    Tree t = Tree(arr[0], (arr[1]), (arr[2]));
-                    TreeProvider().insert(t);
-                    List<Tree> newList = [];
-                    listOfScanneedTrees.forEach((element) {
-                      newList.add(element);
-                    });
-                    newList.add(t);
-                    setState(() {
-                      listOfScanneedTrees = newList;
-                    });
-                  },
-                  child: Text(
-                    'Open Scanner',
-                    style: TextStyle(
-                        color: Colors.lightGreen,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        letterSpacing: 1.0),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 40),
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FlatButton(
+                      padding: EdgeInsets.all(15.0),
+                      onPressed: () async {
+                        String res = await BarcodeScanner.scan();
+                        var arr = res.split(", ");
+                        Tree t = Tree(arr[0], (arr[1]),(arr[2]));
+                        TreeProvider().insert(t);
+                        List<Tree> newList = [];
+                        listOfScanneedTrees.forEach((element) {newList.add(element);});
+                        newList.add(t);
+                        setState(() {
+                          listOfScanneedTrees = newList;
+                        });
+                      },
+                      child: Text(
+                        'Open Scanner',
+                        style: TextStyle(color: Colors.lightGreen, fontWeight: FontWeight.bold),
+                      ),
+                      shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.green, width: 3.0),
+                          borderRadius: BorderRadius.circular(20.0)
+                      ),
+                    ),
                   ),
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.green, width: 3.0),
-                      borderRadius: BorderRadius.circular(20.0)),
-                ),
-              ),
+
 
               // Padding(
               //   padding: const EdgeInsets.all(8.0),
@@ -98,9 +88,11 @@ class ScannerPageState extends State<ScannerPage> {
                 },
               )
             ],
+
+            ),
+
           ),
-        ),
-      ),
-    ));
+        )
+    );
   }
 }
