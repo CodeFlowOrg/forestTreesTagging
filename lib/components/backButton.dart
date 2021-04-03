@@ -13,7 +13,7 @@ class backButton extends StatelessWidget {
         ),
         child: IconButton(
             icon: Icon(
-              Icons.arrow_left,
+              Icons.arrow_back_ios_rounded,
               color: Colors.white,
             ),
             onPressed: () {
