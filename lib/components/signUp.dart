@@ -29,6 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
@@ -115,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
+                  height: width * 0.01,
                 ),
                 Container(
                   //color: Colors.blueAccent,
@@ -139,7 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height:  MediaQuery.of(context).size.height * 0.01,
+                  height:  width * 0.01,
                 ),
                 Container(
                   //color: Colors.blueAccent,
@@ -161,7 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height:  MediaQuery.of(context).size.height * 0.01,
+                  height: width * 0.01,
                 ),
                 Container(
                   //color: Colors.blueAccent,
@@ -185,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height:  MediaQuery.of(context).size.height * 0.0005,
+                  height:  width * 0.0005,
                 ),
                 Container(
                   //color: Colors.yellow,
@@ -213,7 +214,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height:  MediaQuery.of(context).size.height * 0.01,
+                  height:  width * 0.01,
                 ),
                 Container(
                   //color: Colors.yellow,
@@ -251,7 +252,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height:  MediaQuery.of(context).size.height * 0.003,
+                  height: width* 0.003,
                 ),
               ],
             ),
