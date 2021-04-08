@@ -46,7 +46,7 @@ dependencies:
   firebase_storage:
   image_picker:
   geolocator:
-
+  mapbox_gl: ^0.11.0
 
 
 dev_dependencies:
