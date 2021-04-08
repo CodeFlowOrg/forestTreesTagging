@@ -35,7 +35,7 @@ class _TreeInfoPageState extends State<TreeInfoPage> {
           backButton(),
           Center(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 100),
@@ -129,7 +129,7 @@ class _TreeInfoPageState extends State<TreeInfoPage> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 25,
+                                    height: 15,
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
