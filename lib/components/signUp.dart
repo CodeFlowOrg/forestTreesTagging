@@ -29,9 +29,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -114,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10.0,
+                  height: width * 0.01,
                 ),
                 Container(
                   //color: Colors.blueAccent,
@@ -138,7 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10.0,
+                  height:  width * 0.01,
                 ),
                 Container(
                   //color: Colors.blueAccent,
@@ -160,7 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10.0,
+                  height: width * 0.01,
                 ),
                 Container(
                   //color: Colors.blueAccent,
@@ -184,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 5.0,
+                  height:  width * 0.0005,
                 ),
                 Container(
                   //color: Colors.yellow,
@@ -212,7 +214,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height:  width * 0.01,
                 ),
                 Container(
                   //color: Colors.yellow,
@@ -250,10 +252,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 20.0,
-                ),
-                SizedBox(
-                  height: 10.0,
+                  height: width* 0.003,
                 ),
               ],
             ),
