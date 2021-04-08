@@ -29,6 +29,7 @@ class _TreeInfoPageState extends State<TreeInfoPage> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(
         children: [
@@ -38,7 +39,7 @@ class _TreeInfoPageState extends State<TreeInfoPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 100),
+               SizedBox(height: 100),
                 Stack(
                   children: [
                     Container(
@@ -170,16 +171,16 @@ class _TreeInfoPageState extends State<TreeInfoPage> {
                       child: Text("Exact location of the tree: ",
                           style: TextStyle(fontSize: 15, color: Colors.black)),
                     )),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 2.0),
+                SizedBox(height: 10),
+                Expanded(
                   child: Container(
-                    height: 210,
                     child: MapboxMap(
                       accessToken: token,
                       styleString: style,
                       initialCameraPosition: CameraPosition(
                         zoom: 11.0,
-                        target: LatLng(double.parse(widget.t.latitude), double.parse(widget.t.longitude)),
+                        target: LatLng(double.parse(widget.t.latitude),
+                            double.parse(widget.t.longitude)),
                       ),
                     ),
                   ),
