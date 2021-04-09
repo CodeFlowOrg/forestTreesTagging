@@ -20,6 +20,7 @@ class ScannerPageState extends State<ScannerPage> {
   Widget build(BuildContext context) {
     return Material(
         child: Container(
+
       child: Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 40),
@@ -83,6 +84,7 @@ class ScannerPageState extends State<ScannerPage> {
                   endIndent: 0,
                 ),
               ),
+
               StreamBuilder(
                 stream: TreeProvider().getTrees().asStream(),
                 builder:
@@ -108,6 +110,7 @@ class ScannerPageState extends State<ScannerPage> {
                 },
               )
             ],
+
           ),
         ),
       ),

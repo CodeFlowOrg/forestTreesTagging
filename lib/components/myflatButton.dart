@@ -22,7 +22,9 @@ class MyFlatButton extends StatelessWidget {
         child: Text(
           text,
           style:
-              TextStyle(color: Colors.lightGreen, fontWeight: FontWeight.bold),
+
+          TextStyle(color: Colors.white, fontWeight: FontWeight.bold,letterSpacing: 1,fontSize: 16),
+
         ),
         shape: RoundedRectangleBorder(
             side: BorderSide(color: Colors.green, width: 3.0),

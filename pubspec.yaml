@@ -71,7 +71,10 @@ flutter:
     - assets/images/sample_profile_image.jpg
     - assets/images/palm-tree-outline.png
     - assets/images/upload.png
+    - assets/images/login.png
+    - assets/images/scan.png
     - assets/images/loading.gif
+
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware.

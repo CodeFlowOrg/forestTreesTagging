@@ -184,7 +184,7 @@ class _HomeScreen extends State<HomeScreen> {
                       alignment: Alignment.center,
                       child: CircleAvatar(
                         radius: 100,
-                        backgroundColor: Colors.lightBlueAccent,
+                        backgroundColor: Colors.black,
                         child: ClipOval(
                           child: SizedBox(
                             width: 192.0,
@@ -194,14 +194,18 @@ class _HomeScreen extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    Container(
+                     Container(
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 150, left: 173),
+
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        shape: BoxShape.circle,),
                       child: IconButton(
                         icon: Icon(
                           Icons.camera_alt_rounded,
                           size: 30.0,
-                          color: Colors.black54,
+                          color: Colors.white,
                         ),
                         onPressed: () {
                           print("Camera pressed");

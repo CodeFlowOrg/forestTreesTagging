@@ -27,7 +27,7 @@ class _WelcomeState extends State<Welcome> {
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height / 10),
+                    top: MediaQuery.of(context).size.height / 15),
                 child: Image(
                   image: AssetImage("assets/images/palm-tree-outline.png"),
                   height: 200,
@@ -63,7 +63,9 @@ class _WelcomeState extends State<Welcome> {
                     fontSize: 18.0,
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.w500,
-                    color: Color.fromRGBO(0, 0, 200, 1),
+
+                    color: Color(0xffFA1B5D),
+
                     letterSpacing: 1.0,
                   ),
                 ),
