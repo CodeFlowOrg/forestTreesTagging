@@ -95,6 +95,9 @@ class ScannerPageState extends State<ScannerPage> {
                     return Container(
                       height: 400,
                       child: ListView(
+                        scrollDirection: Axis.vertical,
+                        physics: BouncingScrollPhysics(),
+                        padding: EdgeInsets.only(bottom: 16),
                         children: [
                           for (int i = 0; i < snapshot.data.length; i++)
                             TreeListItem(i + 1, Tree.fromMap(snapshot.data[i]))
