@@ -1,6 +1,9 @@
+import 'package:auth_buttons/res/buttons/google_auth_button.dart';
+import 'package:auth_buttons/res/shared/auth_style.dart';
 import 'package:clip_shadow/clip_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:forest_tagger/Services/googleAuthentication.dart';
 import 'package:forest_tagger/Services/logInAuthentication.dart';
 import 'package:forest_tagger/components/homeScreen.dart';
 import 'package:forest_tagger/components/signUp.dart';
@@ -12,6 +15,7 @@ class LogInScreen extends StatefulWidget {
 
 class _LogInScreenState extends State<LogInScreen> {
   final _logInKey = GlobalKey<FormState>();
+  AuthService _auth = new AuthService();
   TextEditingController _userEmail = TextEditingController();
   TextEditingController _userPwd = TextEditingController();
 
@@ -25,6 +29,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -91,7 +96,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 40.0,
+                  height: height * 0.030,
                 ),
                 Container(
                   //color: Colors.blueAccent,
@@ -115,9 +120,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 30.0,
-                ),
+                SizedBox(height: height * 0.03),
                 Container(
                   //color: Colors.blueAccent,
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -138,7 +141,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: height * 0.01,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
@@ -176,7 +179,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 30.0,
+                  height: height * 0.020,
                 ),
                 Row(
                   children: [
@@ -225,8 +228,53 @@ class _LogInScreenState extends State<LogInScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: height * 0.02,
                 ),
+                Container(
+                  width: MediaQuery.of(context).size.width - 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                          child: Divider(
+                        color: Colors.grey,
+                      )),
+                      Text(
+                        "Or Connect",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      Expanded(
+                          child: Divider(
+                        color: Colors.grey,
+                      )),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GoogleAuthButton(
+                        borderRadius: 29,
+                        iconSize: 30,
+                        style: AuthButtonStyle.icon,
+                        onPressed: () async {
+                          await _auth.signInWithGoogle().then(
+                            (result) async {
+                              if (result != null) {
+                                Navigator.pushAndRemoveUntil(context,
+                                    MaterialPageRoute(
+                                  builder: (context) {
+                                    return HomeScreen(_auth.userName);
+                                  },
+                                ), (route) => false);
+                              }
+                            },
+                          );
+                        }),
+                  ],
+                ),
+                SizedBox(height: height * 0.02),
               ],
             ),
           ),

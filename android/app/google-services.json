@@ -9,10 +9,18 @@
       "client_info": {
         "mobilesdk_app_id": "1:453375936121:android:819e51643e4a8f0e0236a8",
         "android_client_info": {
-          "package_name": "com.example.forest_tagger"
+          "package_name": "com.company.codeflow"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "453375936121-vn6cqi8m5h0vr7lppl4pvgi3si6r1t4r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.codeflow",
+            "certificate_hash": "1cc63aed40b207db68825c78bd3c392da4994fef"
+          }
+        },
         {
           "client_id": "453375936121-hv4alvekgjcs3br53jrgg0p01noglqvd.apps.googleusercontent.com",
           "client_type": 3
