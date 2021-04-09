@@ -9,6 +9,15 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+  bool isLoading;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    isLoading = false;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,10 +95,16 @@ class _WelcomeState extends State<Welcome> {
                     ),
                   ),
                   onPressed: () {
+                    setState(() {
+                      isLoading = true;
+                    });
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (_) => SignUpScreen()),
                     );
+                    setState(() {
+                      isLoading = false;
+                    });
                   },
                 ),
               ),
