@@ -14,6 +14,7 @@ import 'package:forest_tagger/components/homeScreen.dart';
 import 'package:forest_tagger/components/signUp.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class LogInScreen extends StatefulWidget {
   @override
@@ -23,9 +24,18 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   final _logInKey = GlobalKey<FormState>();
   AuthService _auth = new AuthService();
+  bool isLoading = false;
+
   TextEditingController _userEmail = TextEditingController();
   TextEditingController _userPwd = TextEditingController();
   File _image;
+  @override
+  void initState() {
+    // TODO: implement initState
+    isLoading = false;
+    super.initState();
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -64,7 +74,15 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    return Scaffold(
+    return  ModalProgressHUD(
+        inAsyncCall: isLoading,
+        color: Colors.black54,
+        opacity: 0.7,
+        progressIndicator: CircularProgressIndicator(
+        backgroundColor: Colors.black38,
+        strokeWidth: 5.0,
+    ),
+    child: Scaffold(
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -247,10 +265,20 @@ class _LogInScreenState extends State<LogInScreen> {
                             ),
                             onPressed: () {
                               if (_logInKey.currentState.validate()) {
+                                setState(() {
+                                  print("True");
+                                  isLoading = true;
+                                });
+
                                 print("proceed");
                                 var _logAuth = LogInAuth(this._userEmail.text,
                                     this._userPwd.text, context);
                                 _logAuth.auth();
+
+                                setState(() {
+                                  print("False");
+                                  isLoading = false;
+                                });
                               } else {
                                 print("Can't Proceed");
                               }
@@ -316,7 +344,7 @@ class _LogInScreenState extends State<LogInScreen> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
 

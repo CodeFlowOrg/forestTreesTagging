@@ -29,7 +29,7 @@ class SignUpAuth {
         this._context,
         MaterialPageRoute(builder: (_) => LogInScreen()),
       );
-      messageShow(this._context, "Sign Up Complete", "Please Log-in to Enjoy this app");
+      messageShow(this._context, "Sign Up Complete", "A Verification Link Send To Your Registered Email\nPlease Log-in to Enjoy this app");
     }).catchError((e) {
       print("Sign-Up Error is: ${e.toString()}");
       if(e.toString() == "[firebase_auth/email-already-in-use] The email address is already in use by another account.")
