@@ -1,12 +1,19 @@
+import 'dart:io';
+import 'dart:math';
+
 import 'package:auth_buttons/res/buttons/google_auth_button.dart';
 import 'package:auth_buttons/res/shared/auth_style.dart';
 import 'package:clip_shadow/clip_shadow.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:forest_tagger/Services/googleAuthentication.dart';
 import 'package:forest_tagger/Services/logInAuthentication.dart';
 import 'package:forest_tagger/components/homeScreen.dart';
 import 'package:forest_tagger/components/signUp.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:http/http.dart' as http;
 
 class LogInScreen extends StatefulWidget {
   @override
@@ -18,13 +25,40 @@ class _LogInScreenState extends State<LogInScreen> {
   AuthService _auth = new AuthService();
   TextEditingController _userEmail = TextEditingController();
   TextEditingController _userPwd = TextEditingController();
-
+  File _image;
   @override
   void dispose() {
     // TODO: implement dispose
     _userEmail.dispose();
     _userPwd.dispose();
     super.dispose();
+  }
+
+  Future uploadProfilePic(BuildContext context) async {
+    // Profile Image name Same as user id
+    String fileName = FirebaseAuth.instance.currentUser.uid;
+    Reference firebaseStorageRef =
+        FirebaseStorage.instance.ref().child(fileName);
+    UploadTask uploadTask = firebaseStorageRef.putFile(_image);
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        duration: Duration(seconds: 5),
+        content: Text('Wait...Picture is uploading')));
+    await uploadTask.whenComplete(() {
+      print("Picture Uploaded");
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Picture Uploaded')));
+    });
+  }
+
+  Future<File> urlToFile(String imageUrl) async {
+    var rng = new Random();
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    File file = new File('$tempPath' + (rng.nextInt(100)).toString() + '.png');
+    http.Response response = await http.get(imageUrl);
+    await file.writeAsBytes(response.bodyBytes);
+    return file;
   }
 
   @override
@@ -262,6 +296,8 @@ class _LogInScreenState extends State<LogInScreen> {
                           await _auth.signInWithGoogle().then(
                             (result) async {
                               if (result != null) {
+                                _image = await urlToFile(_auth.imageUrl);
+                                await uploadProfilePic(context);
                                 Navigator.pushAndRemoveUntil(context,
                                     MaterialPageRoute(
                                   builder: (context) {
