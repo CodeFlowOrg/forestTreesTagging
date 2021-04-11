@@ -183,15 +183,19 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                         ),
                         onPressed: () {
+                          // If Email Structure has matched
                           if (_emailRegex.hasMatch(this._userEmail.text)) {
+                            // Send Reset Email Link to the entered Email
                             FirebaseAuth.instance.sendPasswordResetEmail(
                                 email: this._userEmail.text);
+                            // Show Alert About the Conformation of Link Send
                             showAlert(
                                 "Reset Link Send",
                                 "Password Reset Link Send to this Email:\n${this._userEmail.text}\n\nPassword Must Be 8 Characters",
                                 Colors.green,
                                 Colors.white);
                           } else {
+                            // Show Alert about that not a Email Format
                             showAlert(
                                 "Not an Email Format",
                                 "Please Give a Valid Email",
@@ -304,7 +308,7 @@ class _LogInScreenState extends State<LogInScreen> {
           ),
         ));
   }
-
+  // Alert To Show
   showAlert(
       String _title, String _content, Color _titleColor, Color _contentColor) {
     showDialog(
