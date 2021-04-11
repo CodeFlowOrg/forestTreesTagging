@@ -39,6 +39,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return ModalProgressHUD(
         inAsyncCall: isLoading,
         color: Colors.black54,
@@ -50,22 +51,22 @@ class _LogInScreenState extends State<LogInScreen> {
         child: Scaffold(
           body: SingleChildScrollView(
             child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              width: mediaQueryData.size.width,
+              height: mediaQueryData.size.height,
               child: Form(
                 key: _logInKey,
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.4,
+                      height: mediaQueryData.size.height * 0.4,
                       child: Stack(
                         children: <Widget>[
                           Positioned.fill(
                             child: ClipPath(
                               clipper: oclip(),
                               child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height,
+                                width: mediaQueryData.size.width,
+                                height: mediaQueryData.size.height,
                                 decoration: BoxDecoration(
                                   color: Color(0xff8B4513),
                                 ),
@@ -84,8 +85,8 @@ class _LogInScreenState extends State<LogInScreen> {
                               ],
                               clipper: rclip(),
                               child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height,
+                                width: mediaQueryData.size.width,
+                                height: mediaQueryData.size.height,
                                 decoration: BoxDecoration(
                                   color: Color(0xff1e4d2b),
                                 ),
@@ -96,8 +97,8 @@ class _LogInScreenState extends State<LogInScreen> {
                             alignment: Alignment.topLeft,
                             child: Container(
                               margin: EdgeInsets.only(
-                                left: MediaQuery.of(context).size.width * 0.1,
-                                top: MediaQuery.of(context).size.height * 0.1,
+                                left: mediaQueryData.size.width * 0.1,
+                                top: mediaQueryData.size.height * 0.1,
                               ),
                               child: Text(
                                 'Login',
@@ -224,8 +225,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                 child: Container(
                                   //color: Colors.red,
                                   alignment: Alignment.center,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
+                                  width: mediaQueryData.size.width * 0.4,
                                   child: Text(
                                     "Log In",
                                     style: TextStyle(
@@ -279,7 +279,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           //color: Colors.red,
                           //alignment: Alignment.center,
 
-                          //width: MediaQuery.of(context).size.width * 0.8,
+                          //width: mediaQueryData.size.width * 0.8,
                           child: Text(
                             "Do you want to create a account?",
                             style: TextStyle(
