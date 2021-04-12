@@ -1,4 +1,4 @@
-package com.example.forest_tagger;
+package com.company.codeflow;
 
 import io.flutter.embedding.android.FlutterActivity;
 

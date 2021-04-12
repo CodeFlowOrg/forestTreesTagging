@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:forest_tagger/Services/googleAuthentication.dart';
 import 'package:forest_tagger/components/WelComePage.dart';
 import 'package:forest_tagger/components/generatorPage.dart';
 import 'package:forest_tagger/components/scannerPage.dart';
@@ -27,6 +28,7 @@ class _HomeScreen extends State<HomeScreen> {
   String name = "User";
   File _image;
   var _uploadImg;
+  final _auth = AuthService.instance;
 
   // By default profile image set
   Image _profileImage = Image.asset(
@@ -265,6 +267,7 @@ class _HomeScreen extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(5.0))),
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
+                  _auth.signOutGoogle();
                   Navigator.pop(context);
                   Navigator.push(
                     context,

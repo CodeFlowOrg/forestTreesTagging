@@ -1,10 +1,19 @@
+import 'dart:io';
+import 'dart:math';
+
+import 'package:auth_buttons/res/buttons/google_auth_button.dart';
+import 'package:auth_buttons/res/shared/auth_style.dart';
 import 'package:clip_shadow/clip_shadow.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:forest_tagger/Services/firebaseStroageService.dart';
+import 'package:forest_tagger/Services/googleAuthentication.dart';
 import 'package:forest_tagger/Services/logInAuthentication.dart';
 import 'package:forest_tagger/components/homeScreen.dart';
 import 'package:forest_tagger/components/signUp.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:http/http.dart' as http;
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -15,9 +24,12 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   final _logInKey = GlobalKey<FormState>();
   bool isLoading = false;
+  final _auth = AuthService.instance;
+  final firebase = FirebaseStorageServices.instance;
 
   TextEditingController _userEmail = TextEditingController();
   TextEditingController _userPwd = TextEditingController();
+  File _image;
 
   final RegExp _emailRegex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
@@ -35,6 +47,16 @@ class _LogInScreenState extends State<LogInScreen> {
     _userEmail.dispose();
     _userPwd.dispose();
     super.dispose();
+  }
+
+  Future<File> urlToFile(String imageUrl) async {
+    var rng = new Random();
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    File file = new File('$tempPath' + (rng.nextInt(100)).toString() + '.png');
+    http.Response response = await http.get(imageUrl);
+    await file.writeAsBytes(response.bodyBytes);
+    return file;
   }
 
   @override
@@ -58,7 +80,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: size.height * 0.4,
+                      height: size.height * 0.35,
                       child: Stack(
                         children: <Widget>[
                           Positioned.fill(
@@ -114,7 +136,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 40.0,
+                      height: size.height*0.030,
                     ),
                     Container(
                       //color: Colors.blueAccent,
@@ -137,7 +159,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 30.0,
+                      height: size.height*0.03,
                     ),
                     Container(
                       //color: Colors.blueAccent,
@@ -159,7 +181,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10.0,
+                      height: size.height*0.01,
                     ),
                     Container(
                       alignment: Alignment.centerRight,
@@ -206,7 +228,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10.0,
+                      height: size.height*0.01,
                     ),
                     Row(
                       children: [
@@ -267,7 +289,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 20,
+                      height: size.height*0.01,
                     ),
                     Container(
                       child: TextButton(
@@ -301,6 +323,52 @@ class _LogInScreenState extends State<LogInScreen> {
                         },
                       ),
                     ),
+                    SizedBox(
+                      height: size.height*0.01,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width - 50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: Divider(
+                            color: Colors.grey,
+                          )),
+                          Text(
+                            "Or Connect",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          Expanded(
+                              child: Divider(
+                            color: Colors.grey,
+                          )),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: size.height*0.01),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      GoogleAuthButton(
+                          borderRadius: 29,
+                          iconSize: 30,
+                          style: AuthButtonStyle.icon,
+                          onPressed: () async {
+                            final result = await _auth.signInWithGoogle();
+                            if (result != null) {
+                              _image = await urlToFile(_auth.imageUrl);
+                              await firebase.uploadProfilePic(_image);
+                              Navigator.pushAndRemoveUntil(context,
+                                  MaterialPageRoute(
+                                builder: (context) {
+                                  return HomeScreen(_auth.userName);
+                                },
+                              ), (route) => false);
+                            }
+                          }),
+                    ]),
+                    SizedBox(
+                      height: 5,
+                    ),
                   ],
                 ),
               ),
@@ -308,6 +376,7 @@ class _LogInScreenState extends State<LogInScreen> {
           ),
         ));
   }
+
   // Alert To Show
   showAlert(
       String _title, String _content, Color _titleColor, Color _contentColor) {
