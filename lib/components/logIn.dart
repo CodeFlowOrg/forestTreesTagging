@@ -25,6 +25,7 @@ class _LogInScreenState extends State<LogInScreen> {
   final _logInKey = GlobalKey<FormState>();
   bool isLoading = false;
   final _auth = AuthService.instance;
+  final firebase = FirebaseStorageServices.instance;
 
   TextEditingController _userEmail = TextEditingController();
   TextEditingController _userPwd = TextEditingController();
@@ -355,8 +356,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             final result = await _auth.signInWithGoogle();
                             if (result != null) {
                               _image = await urlToFile(_auth.imageUrl);
-                              final firebase = FirebaseStorageServices(image: _image,context: context);
-                              await firebase.uploadProfilePic();
+                              await firebase.uploadProfilePic(_image);
                               Navigator.pushAndRemoveUntil(context,
                                   MaterialPageRoute(
                                 builder: (context) {
