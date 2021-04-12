@@ -24,6 +24,7 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   final _logInKey = GlobalKey<FormState>();
   bool isLoading = false;
+  final _auth = AuthService.instance;
 
   TextEditingController _userEmail = TextEditingController();
   TextEditingController _userPwd = TextEditingController();
@@ -351,11 +352,10 @@ class _LogInScreenState extends State<LogInScreen> {
                           iconSize: 30,
                           style: AuthButtonStyle.icon,
                           onPressed: () async {
-                            var _auth = AuthService();
                             final result = await _auth.signInWithGoogle();
                             if (result != null) {
                               _image = await urlToFile(_auth.imageUrl);
-                              var firebase = FirebaseStorageServices(_image, context);
+                              final firebase = FirebaseStorageServices(image: _image,context: context);
                               await firebase.uploadProfilePic();
                               Navigator.pushAndRemoveUntil(context,
                                   MaterialPageRoute(

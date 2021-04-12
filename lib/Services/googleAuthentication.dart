@@ -3,8 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
+  static final AuthService _singleton = new AuthService._internal();
+  AuthService._internal();
+  static AuthService get instance => _singleton;
+
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  
   String imageUrl;
   String userName;
 
@@ -41,7 +46,7 @@ class AuthService {
         'email': user.email,
         'user': userName,
       });
-      
+
       print('signInWithGoogle succeeded: $user');
 
       return '${user.uid}';
@@ -52,6 +57,4 @@ class AuthService {
   Future<void> signOutGoogle() async {
     await googleSignIn.signOut();
   }
-
-  
 }

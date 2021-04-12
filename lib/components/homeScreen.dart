@@ -28,7 +28,7 @@ class _HomeScreen extends State<HomeScreen> {
   String name = "User";
   File _image;
   var _uploadImg;
-  AuthService _auth = new AuthService();
+  final _auth = AuthService.instance;
 
   // By default profile image set
   Image _profileImage = Image.asset(

@@ -9,8 +9,18 @@ class FirebaseStorageServices{
   File _image;
   BuildContext _context;
 
-  FirebaseStorageServices(this._image,this._context);
-  
+  static final FirebaseStorageServices _singleton = new FirebaseStorageServices._internal();
+
+  FirebaseStorageServices._internal();
+
+  factory FirebaseStorageServices({File image, BuildContext context}) {
+
+      _singleton._image = image;
+      _singleton._context = context;
+      
+    return _singleton;
+  }
+
     Future uploadProfilePic() async {
     // Profile Image name Same as user id
     String fileName = FirebaseAuth.instance.currentUser.uid;
@@ -18,13 +28,13 @@ class FirebaseStorageServices{
         FirebaseStorage.instance.ref().child(fileName);
     UploadTask uploadTask = firebaseStorageRef.putFile(this._image);
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        duration: Duration(seconds: 5),
-        content: Text('Wait...Picture is uploading')));
+    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //     duration: Duration(seconds: 5),
+    //     content: Text('Wait...Picture is uploading')));
     await uploadTask.whenComplete(() {
       print("Picture Uploaded");
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Picture Uploaded')));
+      // ScaffoldMessenger.of(context)
+      //     .showSnackBar(SnackBar(content: Text('Picture Uploaded')));
     });
   }
 }
