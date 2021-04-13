@@ -45,6 +45,7 @@ class AuthService {
       await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
         'email': user.email,
         'user': userName,
+        'profileimg': user.photoURL,
       });
 
       print('signInWithGoogle succeeded: $user');

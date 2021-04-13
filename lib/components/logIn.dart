@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:auth_buttons/res/buttons/google_auth_button.dart';
 import 'package:auth_buttons/res/shared/auth_style.dart';
@@ -12,8 +11,6 @@ import 'package:forest_tagger/Services/googleAuthentication.dart';
 import 'package:forest_tagger/Services/logInAuthentication.dart';
 import 'package:forest_tagger/components/homeScreen.dart';
 import 'package:forest_tagger/components/signUp.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:http/http.dart' as http;
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -47,16 +44,6 @@ class _LogInScreenState extends State<LogInScreen> {
     _userEmail.dispose();
     _userPwd.dispose();
     super.dispose();
-  }
-
-  Future<File> urlToFile(String imageUrl) async {
-    var rng = new Random();
-    Directory tempDir = await getTemporaryDirectory();
-    String tempPath = tempDir.path;
-    File file = new File('$tempPath' + (rng.nextInt(100)).toString() + '.png');
-    http.Response response = await http.get(imageUrl);
-    await file.writeAsBytes(response.bodyBytes);
-    return file;
   }
 
   @override
@@ -355,8 +342,6 @@ class _LogInScreenState extends State<LogInScreen> {
                           onPressed: () async {
                             final result = await _auth.signInWithGoogle();
                             if (result != null) {
-                              _image = await urlToFile(_auth.imageUrl);
-                              await firebase.uploadProfilePic(_image);
                               Navigator.pushAndRemoveUntil(context,
                                   MaterialPageRoute(
                                 builder: (context) {
