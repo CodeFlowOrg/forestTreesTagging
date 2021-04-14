@@ -41,7 +41,8 @@ class _HomeScreen extends State<HomeScreen> {
   );
 
   _HomeScreen(this.name);
-
+  
+  //used for picking image from gallery
   Future getImageFromStorage(BuildContext context) async {
     var image = await ImagePicker().getImage(source: ImageSource.gallery);
     setState(() {
@@ -54,7 +55,8 @@ class _HomeScreen extends State<HomeScreen> {
       print("Image Path: $_image");
     });
   }
-
+ 
+ //used for uploading profile image to firebase storage bucket and generating imageurl for further loading image
   Future uploadProfilePic(BuildContext context) async {
     setState(() {
       _uploadImg = null;
@@ -62,7 +64,8 @@ class _HomeScreen extends State<HomeScreen> {
 
     await firebasestorage.uploadProfilePic(_image);
   }
-
+  
+  //used for opening file manager to search for images to set as profile pic
   Widget imageSelect() {
     try {
       return _image != null
@@ -78,7 +81,8 @@ class _HomeScreen extends State<HomeScreen> {
       );
     }
   }
-
+  
+  //Used for setting other pic as profile pic from gallery
   Widget setProfilePic(BuildContext context) {
     return GestureDetector(
         child: Column(
@@ -105,10 +109,12 @@ class _HomeScreen extends State<HomeScreen> {
     super.initState();
     _uploadImg = null;
     try {
+      //As soon as the homescreen loads firstly all the user info is fetched from firbase
       userdata.fetchData().then((value) {
         setState(() {
           this.name = userdata.name;
           print(this.name);
+          //profile image is set from the fetched data
           _profileImage = Image.network(
             userdata.profileimg,
             fit: BoxFit.fill,

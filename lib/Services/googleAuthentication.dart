@@ -41,7 +41,7 @@ class AuthService {
 
       final User currentUser = _auth.currentUser;
       assert(user.uid == currentUser.uid);
-
+      //signin through google and set name,email and profile image on firebase
       await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
         'email': user.email,
         'user': userName,

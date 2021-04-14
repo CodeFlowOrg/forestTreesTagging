@@ -7,7 +7,8 @@ class DbUserData {
   static DbUserData get instance => _singleton;
 
   String name, email, profileimg;
-
+  
+  //used to fetch user information from firebase
   Future<void> fetchData() async {
     try {
       await FirebaseFirestore.instance
@@ -19,6 +20,7 @@ class DbUserData {
         email = value.get('email');
         profileimg = value.get('profileimg');
         if(profileimg==null || profileimg==""){
+          //if profileimage is not set then load default image
           profileimg = 'https://www.shout-fm.de/media/images/unbekannt.jpg';
         }
       });

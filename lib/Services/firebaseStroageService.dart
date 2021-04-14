@@ -11,7 +11,9 @@ class FirebaseStorageServices {
   static FirebaseStorageServices get instance => _singleton;
 
   String path;
-
+  
+  //used to upload profileimage on firebase storage bucket and then generate the imageurl,
+  //which is further used to load image
   Future uploadProfilePic(File _image) async {
     // Profile Image name Same as user id
     String fileName = FirebaseAuth.instance.currentUser.uid;
