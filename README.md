@@ -40,6 +40,16 @@ Watch the tutorial [Trees Tagging App](https://youtu.be/1KWwgAF0LXY) or follow t
 The repo's codebase is now setup on your local machine, and you can make changes and push them to the git repo.
 
 
+## Foresttreestagging is a part of these Open Source programs
+
+<p align="center">
+ <a>
+ <img  width="70%" height="30%" src="https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png">
+ 
+</p>
+
+</br>
+
 ## Contributors:👨🏻‍💻
 ### Credits go to these people✨
 
