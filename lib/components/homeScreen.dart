@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:forest_tagger/Services/dbUserData.dart';
+import 'package:forest_tagger/Services/firebaseStroageService.dart';
 import 'package:forest_tagger/Services/googleAuthentication.dart';
 import 'package:forest_tagger/components/WelComePage.dart';
 import 'package:forest_tagger/components/generatorPage.dart';
@@ -29,6 +31,8 @@ class _HomeScreen extends State<HomeScreen> {
   File _image;
   var _uploadImg;
   final _auth = AuthService.instance;
+  final firebasestorage = FirebaseStorageServices.instance;
+  final userdata = DbUserData.instance;
 
   // By default profile image set
   Image _profileImage = Image.asset(
@@ -37,7 +41,8 @@ class _HomeScreen extends State<HomeScreen> {
   );
 
   _HomeScreen(this.name);
-
+  
+  //used for picking image from gallery
   Future getImageFromStorage(BuildContext context) async {
     var image = await ImagePicker().getImage(source: ImageSource.gallery);
     setState(() {
@@ -50,65 +55,17 @@ class _HomeScreen extends State<HomeScreen> {
       print("Image Path: $_image");
     });
   }
-
+ 
+ //used for uploading profile image to firebase storage bucket and generating imageurl for further loading image
   Future uploadProfilePic(BuildContext context) async {
     setState(() {
       _uploadImg = null;
     });
-    // Profile Image name Same as user id
-    String fileName = FirebaseAuth.instance.currentUser.uid;
-    Reference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child(fileName);
-    UploadTask uploadTask = firebaseStorageRef.putFile(_image);
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        duration: Duration(seconds: 5),
-        content: Text('Wait...Picture is uploading')));
-    await uploadTask.whenComplete(() {
-      print("Picture Uploaded");
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Picture Uploaded')));
-    });
+    await firebasestorage.uploadProfilePic(_image);
   }
-
-  Future<void> getProfilePicFromFirebase() async {
-    try {
-      String fileName = FirebaseAuth.instance.currentUser.uid;
-      Reference firebaseStorageRef =
-          FirebaseStorage.instance.ref().child(fileName);
-      setState(() async {
-        try {
-          // Get Profile Image from Firebase Storage
-          _profileImage = Image.network(
-            await firebaseStorageRef.getDownloadURL(),
-            fit: BoxFit.fill,
-          );
-        } catch (e) {
-          // If user not set profile image
-          print("User not set profile image");
-          print(e.toString());
-          setState(() {
-            _profileImage = Image.asset(
-              'assets/images/sample_profile_image.jpg',
-              fit: BoxFit.fill,
-            );
-          });
-        }
-      });
-    } catch (e) {
-      // Sometimes due to lagging, Image not loading...so loading screen
-      // If you close the app and reopen, profile image automatically come
-      print("Lagging Problem");
-      print(e.toString());
-      setState(() {
-        _profileImage = Image.asset(
-          'assets/images/loading.gif',
-          fit: BoxFit.fill,
-        );
-      });
-    }
-  }
-
+  
+  //used for opening file manager to search for images to set as profile pic
   Widget imageSelect() {
     try {
       return _image != null
@@ -124,7 +81,8 @@ class _HomeScreen extends State<HomeScreen> {
       );
     }
   }
-
+  
+  //Used for setting other pic as profile pic from gallery
   Widget setProfilePic(BuildContext context) {
     return GestureDetector(
         child: Column(
@@ -151,21 +109,18 @@ class _HomeScreen extends State<HomeScreen> {
     super.initState();
     _uploadImg = null;
     try {
-      if (name == "User") {
-        FirebaseFirestore.instance
-            .collection('users')
-            .where('email', isEqualTo: FirebaseAuth.instance.currentUser.email)
-            .get()
-            .then((querySnapShot) {
-          querySnapShot.docs.forEach((element) {
-            setState(() {
-              print(element.get('user'));
-              this.name = element.get('user');
-            });
-          });
+      //As soon as the homescreen loads firstly all the user info is fetched from firbase
+      userdata.fetchData().then((value) {
+        setState(() {
+          this.name = userdata.name;
+          print(this.name);
+          //profile image is set from the fetched data
+          _profileImage = Image.network(
+            userdata.profileimg,
+            fit: BoxFit.fill,
+          );
         });
-      }
-      getProfilePicFromFirebase();
+      });
     } catch (e) {
       print("Fetching Error");
     }

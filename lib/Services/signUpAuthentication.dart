@@ -17,9 +17,10 @@ class SignUpAuth {
         .createUserWithEmailAndPassword(email: this._email, password: this._pwd)
         .then((signedUpUser) {
       signedUpUser.user.sendEmailVerification();
-      FirebaseFirestore.instance.collection('users').add({
+      FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser.uid).set({
         'email': this._email,
         'user': this._userName,
+        'profileimg':'',
       });
 
       FirebaseAuth.instance.signOut();

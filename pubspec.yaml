@@ -48,7 +48,6 @@ dependencies:
   geolocator:
   mapbox_gl: ^0.11.0
   auth_buttons: ^0.0.6
-  http: ^0.12.1
   modal_progress_hud: ^0.1.3
   google_sign_in: ^4.5.9
 
