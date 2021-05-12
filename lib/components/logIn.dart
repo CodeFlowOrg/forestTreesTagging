@@ -59,9 +59,8 @@ class _LogInScreenState extends State<LogInScreen> {
         ),
         child: Scaffold(
           body: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
             child: Container(
-              width: size.width,
-              height: size.height,
               child: Form(
                 key: _logInKey,
                 child: Column(
@@ -123,7 +122,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: size.height*0.030,
+                      height: size.height * 0.030,
                     ),
                     Container(
                       //color: Colors.blueAccent,
@@ -145,9 +144,6 @@ class _LogInScreenState extends State<LogInScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: size.height*0.03,
-                    ),
                     Container(
                       //color: Colors.blueAccent,
                       padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -168,7 +164,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: size.height*0.01,
+                      height: size.height * 0.01,
                     ),
                     Container(
                       alignment: Alignment.centerRight,
@@ -215,7 +211,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: size.height*0.01,
+                      height: size.height * 0.01,
                     ),
                     Row(
                       children: [
@@ -276,7 +272,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: size.height*0.01,
+                      height: size.height * 0.01,
                     ),
                     Container(
                       child: TextButton(
@@ -311,7 +307,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: size.height*0.01,
+                      height: size.height * 0.01,
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width - 50,
@@ -333,9 +329,10 @@ class _LogInScreenState extends State<LogInScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: size.height*0.01),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      GoogleAuthButton(
+                    SizedBox(height: size.height * 0.01),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: GoogleAuthButton(
                           borderRadius: 29,
                           iconSize: 30,
                           style: AuthButtonStyle.icon,
@@ -350,9 +347,6 @@ class _LogInScreenState extends State<LogInScreen> {
                               ), (route) => false);
                             }
                           }),
-                    ]),
-                    SizedBox(
-                      height: 5,
                     ),
                   ],
                 ),
