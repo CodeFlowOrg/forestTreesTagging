@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
                 splashColor: Colors.blue[50],
                 child: Text(
                   "SKIP",
-                  style: TextStyle(color: Color(0xFF3E2723), fontWeight: FontWeight.w600),
+                  style: TextStyle(fontFamily: 'Lora-BoldItalic', color: Color(0xFF3E2723), fontWeight: FontWeight.w600),
                 ),
               ),
               Container(
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                 splashColor: Colors.blue[50],
                 child: Text(
                   "NEXT",
-                  style: TextStyle(color: Color(0xFF3E2723), fontWeight: FontWeight.w600),
+                  style: TextStyle(fontFamily: 'Lora-BoldItalic', color: Color(0xFF3E2723), fontWeight: FontWeight.w600),
                 ),
               ),
             ],
@@ -140,7 +140,7 @@ class _HomeState extends State<Home> {
             alignment: Alignment.center,
             child: Text(
               "LETS GO!!",
-              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),),
+              style: TextStyle(fontFamily: 'Lora-BoldItalic', color: Colors.black, fontWeight: FontWeight.w600),),
               
           ),
         ),
