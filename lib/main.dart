@@ -95,6 +95,7 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               // ignore: deprecated_member_use
               FlatButton(
+                color: Colors.lightGreen,
                 onPressed: (){
                   controller.animateToPage(2, duration: Duration(milliseconds: 400), curve: Curves.linear);
                 },
@@ -112,6 +113,7 @@ class _HomeState extends State<Home> {
               ),
               // ignore: deprecated_member_use
               FlatButton(
+                color: Colors.lightGreen,
                 onPressed: (){
                   print("this is slideIndex: $slideIndex");
                   controller.animateToPage(slideIndex + 1, duration: Duration(milliseconds: 500), curve: Curves.linear);

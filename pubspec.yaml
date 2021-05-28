@@ -77,9 +77,9 @@ flutter:
     - assets/images/palm-tree-outline.png
     - assets/images/upload.png
     - assets/images/loading.gif
-    - assets/images/illustration.png
-    - assets/images/illustration2.png
-    - assets/images/illustration3.png   
+    - assets/images/onboard_1.png
+    - assets/images/onboard_2.png
+    - assets/images/onboard_3.png   
   
 
     # An image asset can refer to one or more resolution-specific "variants", see
