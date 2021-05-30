@@ -38,7 +38,6 @@ class SliderModel{
 
 List<SliderModel> getSlides(){
 
-  // ignore: deprecated_member_use
   List<SliderModel> slides = new List<SliderModel>();
   SliderModel sliderModel = new SliderModel();
 
@@ -59,7 +58,7 @@ List<SliderModel> getSlides(){
   sliderModel = new SliderModel();
 
   //3
-  sliderModel.setDesc("Our app helps in analyzing the various aspects regarding trees; diversity, age, height, growth, and much more");
+  sliderModel.setDesc("Our app helps in analyzing the various aspects regarding trees! diversity, age, height, growth, and much more");
   sliderModel.setTitle("Save Trees!");
   sliderModel.setImageAssetPath("assets/images/onboard_3.png");
   slides.add(sliderModel);

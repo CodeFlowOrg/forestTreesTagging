@@ -28,6 +28,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  // ignore: deprecated_member_use
   List<SliderModel> mySLides = new List<SliderModel>();
   int slideIndex = 0;
   PageController controller;
@@ -38,7 +39,7 @@ class _HomeState extends State<Home> {
       height: isCurrentPage ? 10.0 : 6.0,
       width: isCurrentPage ? 10.0 : 6.0,
       decoration: BoxDecoration(
-        color: isCurrentPage ? Colors.grey : Colors.grey[300],
+        color: isCurrentPage ? Colors.brown : Colors.brown,
         borderRadius: BorderRadius.circular(12),
       ),
     );
@@ -46,6 +47,7 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     mySLides = getSlides();
@@ -95,14 +97,18 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               // ignore: deprecated_member_use
               FlatButton(
-                color: Colors.lightGreen,
                 onPressed: (){
                   controller.animateToPage(2, duration: Duration(milliseconds: 400), curve: Curves.linear);
                 },
                 splashColor: Colors.blue[50],
                 child: Text(
                   "SKIP",
-                  style: TextStyle(fontFamily: 'Lora-BoldItalic', color: Color(0xFF3E2723), fontWeight: FontWeight.w600),
+                  style: TextStyle(color: Colors.greenAccent, fontWeight: FontWeight.w600, 
+                  background: Paint()
+                    ..strokeWidth = 50.0
+                    ..color = Colors.brown
+                    ..style = PaintingStyle.stroke
+                    ..strokeJoin = StrokeJoin.round),
                 ),
               ),
               Container(
@@ -113,7 +119,6 @@ class _HomeState extends State<Home> {
               ),
               // ignore: deprecated_member_use
               FlatButton(
-                color: Colors.lightGreen,
                 onPressed: (){
                   print("this is slideIndex: $slideIndex");
                   controller.animateToPage(slideIndex + 1, duration: Duration(milliseconds: 500), curve: Curves.linear);
@@ -121,7 +126,12 @@ class _HomeState extends State<Home> {
                 splashColor: Colors.blue[50],
                 child: Text(
                   "NEXT",
-                  style: TextStyle(fontFamily: 'Lora-BoldItalic', color: Color(0xFF3E2723), fontWeight: FontWeight.w600),
+                  style: TextStyle(color: Colors.greenAccent, fontWeight: FontWeight.w600, 
+                  background: Paint()
+                    ..strokeWidth = 50.0
+                    ..color = Colors.brown
+                    ..style = PaintingStyle.stroke
+                    ..strokeJoin = StrokeJoin.round),
                 ),
               ),
             ],
@@ -140,7 +150,7 @@ class _HomeState extends State<Home> {
             alignment: Alignment.center,
             child: Text(
               "LETS GO!!",
-              style: TextStyle(fontFamily: 'Lora-BoldItalic', color: Colors.black, fontWeight: FontWeight.w600),),
+              style: TextStyle(color: Colors.brown, fontWeight: FontWeight.w900),),
               
           ),
         ),
