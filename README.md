@@ -3,7 +3,7 @@
 ![Forks](https://img.shields.io/github/forks/CodeFlow201/forestTreesTagging)
 ![Stars](https://img.shields.io/github/stars/CodeFlow201/forestTreesTagging)
 ![Issues](https://img.shields.io/github/issues/CodeFlow201/forestTreesTagging)
-![Pull Requests](https://img.shields.io/github/issues-pr/CodeFlow201/forestTreesTagging?)
+![Pull Requests](https://img.shields.io/github/issues-pr/CodeFlow201/forestTreesTagging?)   
 
 # 🌳Trees🌳 <br> 🔖Tagger🔖 <br> App & Analysis Software
 
